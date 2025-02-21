@@ -1,53 +1,54 @@
 package com.ib.layoutservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter // Add this to ensure getLayout() and setLayout() are generated
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long Id;
 
     @Column(nullable = false, unique = true, length = 50)
-    private String username;
+    private String userName;
 
     @Column(nullable = false, unique = true, length = 100)
-    private String email;
+    private String Email;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "layout_id", referencedColumnName = "id")
-    private Layout layout; // Ensure this is correctly mapped
+    private Layout layout;
+
+    public static void setUser(User user) {
+
+    }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getEmail() {
-        return email;
+        return Email;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.Email = email;
     }
 
     public Layout getLayout() {
