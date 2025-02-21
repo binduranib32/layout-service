@@ -27,7 +27,7 @@ public class UserService {
     }
 
     @Transactional
-    public void assignLayout(Long userId, Long layoutId) {
+    public void assignLayout(Long userId, Long layoutId, String name) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User not found"));
 
@@ -39,8 +39,8 @@ public class UserService {
     }
 
     @Transactional
-    public void updateUserLayout(Long userId, Long layoutId) {
-        assignLayout(userId, layoutId);
+    public void updateUserLayout(Long userId, Long layoutId, String layoutame) {
+        assignLayout(userId, layoutId, layoutame);
     }
 
     public Layout getUserLayout(Long userId) {

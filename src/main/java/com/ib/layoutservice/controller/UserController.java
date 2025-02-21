@@ -20,14 +20,14 @@ public class UserController {
 
 
     @PostMapping("/{userId}/assign/{layoutId}")
-    public ResponseEntity<String> assignLayout(@PathVariable Long userId, @PathVariable Long layoutId) {
-        userService.assignLayout(userId, layoutId);
+    public ResponseEntity<String> assignLayout(@PathVariable Long userId, @PathVariable Long layoutId, @PathVariable String name) {
+        userService.assignLayout(userId, layoutId, name);
         return ResponseEntity.ok("Layout assigned successfully");
     }
 
-    @PutMapping("/{userId}/update/{layoutId}")
-    public ResponseEntity<String> updateUserLayout(@PathVariable Long userId, @PathVariable Long layoutId) {
-        userService.updateUserLayout(userId, layoutId);
+    @PutMapping("/{layoutId}/update/{layoutName}")
+    public ResponseEntity<String> updateUserLayout(@PathVariable Long layoutId, @PathVariable String layoutName) {
+        layoutService.updateUserLayout(layoutId, layoutName);
         return ResponseEntity.ok("User layout updated successfully");
     }
 
